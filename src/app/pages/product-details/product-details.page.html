@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div style="white-space: normal; height: fit-content; align-items: center;">{{ product?.name }}</div></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/products"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content>
+    <swiper #swiper [config]="config">
+      <ng-template swiperSlide *ngFor="let img of images">
+        <img [src]="img">
+      </ng-template>
+    </swiper>
+    <ion-label>{{ description }}</ion-label>
+    <ion-label class="data-bold">{{ 'RM ' +price }}</ion-label>
+    <br><br>
+
+    <ion-label>Available Colors</ion-label>
+      <ion-list *ngFor="let color of colors">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img [src]="color.image_color_url"/>/>
+          </ion-avatar>
+          <ion-label>{{ color.color_title }}</ion-label>
+        </ion-item>
+      </ion-list>
+  </ion-card-content>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Top Products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item button *ngFor="let item of products" [routerLink]="[item.id_product]">
+    <ion-card mode="ios">
+      <ion-card-content>
+        <div class="item-img">
+          <img [src]="item.image_url[0]"/>
+        </div>
+
+        <div class="item-info">
+          <p>{{ item.name }}</p>
+          <p>{{ 'RM' +item.price }}</p>
+          <ion-button expand="block" class="main-button" [routerLink]="[item.id_product]">View Details</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content 
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  </ion-content>
+
